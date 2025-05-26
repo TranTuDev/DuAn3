@@ -1,0 +1,238 @@
+/* Login */
+
+#dndk {
+    position: relative;
+    background-image: url('../../assets/css/images/ttt.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  #dndk::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.637); /* độ tối*/
+    z-index: 2;
+  }
+  
+  .wrapperdkdn {
+    z-index: 3; /* nổi trên overlay */
+  }
+  
+
+  .wrapperdkdn {
+	position: relative;
+	width: 400px;
+	height: 440px;
+	border-radius: 20px;
+	backdrop-filter: blur(20px);
+	background: rgba(255, 255, 255, 0.05); /* Nền sáng nhẹ */
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.3), 
+				0 0 10px rgba(255, 255, 255, 0.2); /* Bóng ngoài sáng nhẹ */
+	border: 1px solid rgba(255, 255, 255, 0.15); /* Viền sáng để nổi hơn */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	transition: height 0.2s ease, box-shadow 0.3s ease;
+}
+.wrapperdkdn:hover {
+	box-shadow: 0 0 40px rgba(255, 255, 255, 0.3),
+				0 0 60px rgba(255, 255, 255, 0.2);
+}
+
+
+  /* Khi đăng ký, tăng chiều cao */
+  .wrapperdkdn.active{
+	height: 520px;
+  }
+
+  .wrapperdkdn::before {
+	content: '';
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url('../../assets/css/images/ftrte.jpg');
+	background-size: cover;
+	background-position: center;
+	filter: brightness(0.4);
+	z-index: 1;
+	pointer-events: none;
+}
+
+   .wrapperdkdn .form-box{
+	position: relative;
+	z-index: 2;
+	color: white;
+	width: 100%;
+	padding: 40px;
+	position: relative;
+	overflow: hidden;
+   }
+
+
+   .wrapperdkdn .form-box.login {
+	transition: transform 0.18s ease;
+	transform: translateX(0);
+}
+.wrapperdkdn.active .form-box.login {
+	transform: translateX(-400px);
+}
+
+
+
+   .wrapperdkdn .form-box.register {
+	position: absolute;
+	transform: translateX(400px);
+	transition: transform 0.18s ease;
+}
+.wrapperdkdn.active .form-box.register {
+	transform: translateX(0);
+}
+
+
+
+
+   .wrapperdkdn .material-symbols-outlined {
+
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	cursor: pointer;
+	font-size: 24px;
+	color: white;
+	z-index: 5; /* ✅ đảm bảo nổi lên trên cùng */
+	transition: color 0.3s;
+
+
+  }
+  .wrapperdkdn .material-symbols-outlined:hover {
+	color: #fd0808;
+	transform: scale(1.2) rotate(90deg);
+	
+  }
+
+   .form-box h2{
+	font-size: 2em;
+	color: #eff0f6;
+	text-align: center;
+
+   }
+   .input-box{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-bottom: 2px solid white;
+	margin: 30px 0;
+   }
+
+   .input-box label{
+	position: absolute;
+	top: 50%;
+	left: 5px;
+	transform:translateY(-50%) ;
+	font-size: 1em;
+	color: #eff0f6;
+	font-weight: 500;
+	pointer-events: none;
+	transition: all 0.5s ease;
+
+   }
+
+   .input-box input:focus~label,
+   .input-box input:valid~label{
+       top: -10px;
+   }
+
+   .input-box input{
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	border: none;
+	outline: none;
+    font-size: 1em;
+	color: #eff0f6;
+	font-weight: 600;
+	padding: 0 35px 0 5px;
+   }
+
+   .input-box i{
+       position: absolute;
+	   right: 8px;
+	   font-size: 1.2em;
+	   color: #ffffff;
+   }
+
+   .remmber-forgot{
+	font-size: .9em;
+	color: #ffffff;
+	font-weight: 500;
+	margin: -15px 0 15px;
+	display: flex;
+	justify-content: space-between;
+
+   }
+    
+
+   .remmber-forgot label input{
+	accent-color:  #ffffff;
+	margin-right: 3px;
+   }
+   .remmber-forgot a{
+	color: #030ff8;
+	margin-left: 75px;
+	text-decoration: none;
+	cursor: pointer;
+	
+   }
+
+   .remmber-forgot a:hover{
+	text-decoration: underline;
+	color: #f4f5f6;
+   }
+   .btn{
+	width: 100%;
+	height: 40px;
+	border: none;
+	outline: none;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 1em;
+	font-weight: 500;
+    background-color: #eff0f6;
+   }
+
+   .btn:hover{
+	color: #f80000;
+	
+   }
+   .login-register{
+	font-size: 1em;
+	text-align: center;
+	font-weight: 500;
+	margin: 25px 0 10px 0;
+   }
+
+   .login-register p a{
+	color: #0a2df7;
+	text-decoration: none;
+	font-size: 600;
+	margin-left: 5px;
+   }
+
+   .login-register p a:hover{
+	text-decoration: underline;
+	color: #ffffff;
+	cursor: pointer;
+   }
+

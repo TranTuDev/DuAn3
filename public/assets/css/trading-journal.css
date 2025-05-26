@@ -1,0 +1,154 @@
+
+ body {
+				background: #1c1d26;
+                color: white;
+                margin: 0;
+                padding: 20px;
+				
+              }
+			
+                .chu h2 {
+                color: #00ffff;
+                text-align: center;
+				font-size: 35px;
+				text-transform: uppercase;
+                letter-spacing: 2px;
+                position: relative;
+                z-index: 1;
+				margin-top: 75px;
+              }
+
+			  h2:hover {
+                color: #00ffff;
+                text-align: center;
+				color: #fff;
+				text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+              }
+
+
+              .form-group {
+                margin-bottom: 10px;
+              }
+          
+              label {
+                display: block;
+                margin-bottom: 4px;
+              }
+          
+              input, select, textarea {
+                width: 100%;
+                padding: 8px;
+                background: #1a1a1a;
+                border: 1px solid #333;
+                color: white;
+                border-radius: 6px;
+              }
+          
+              button {
+                padding: 10px 16px;
+                background: #f3f3f3;
+                border: none;
+                color: black;
+                border-radius: 8px;
+                cursor: pointer;
+                font-weight: bold;
+                margin: 0px 0px 0px 10px ;
+              }
+          
+              button:hover {
+                background: #00e0e0;
+              }
+          
+              .entry-list {
+                margin-top: 30px;
+              }
+          
+              .entry-card {
+                background: #1a1a1a;
+                border-left: 4px solid #00ffff;
+                padding: 15px;
+                border-radius: 8px;
+                margin-bottom: 15px;
+              }
+          
+              .entry-card p {
+                margin: 6px 0;
+              }
+          
+              .entry-actions {
+                margin-top: 10px;
+              }
+          
+              .entry-actions button {
+                margin-right: 8px;
+                background: #444;
+                color: white;
+              }
+          
+              .entry-actions button.edit {
+                background: #ffaa00;
+              }
+          
+              .entry-actions button.delete {
+                background: #ff4444;
+              }
+          
+              .search-bar {
+                margin-top: 20px;
+                display: flex;
+                gap: 10px;
+              }
+          
+              .search-bar input, .search-bar select {
+                flex: 1;
+              }
+               .search-bar {
+            margin: 20px;
+
+        }
+
+        .search-bar form {
+            display: flex;
+            /* align-items: center; */
+            /* canh giữa theo chiều dọc */
+            gap: 10px;
+            /* khoảng cách giữa các phần tử */
+        }
+
+        .search-bar input,
+        .search-bar select {
+            padding: 8px;
+            margin-right: 10px;
+            width: 150px;
+
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+        td,
+        th {
+            padding: 12px;
+            border: 1px solid #333;
+            text-align: center;
+            word-wrap: break-word;
+            /* ✅ Tự ngắt từ */
+            white-space: normal;
+            /* ✅ Cho phép xuống dòng */
+            max-width: 200px;
+            /* ✅ Giới hạn độ rộng ô */
+        }
+
+     
+
+        th {
+            background-color: #222;
+        }
+
+        tr:hover {
+            background-color: #2a2a2a;
+        }

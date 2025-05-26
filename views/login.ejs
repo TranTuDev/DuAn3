@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>
+        Baby Shark Crypto - Đăng Nhâp - Đăng Ký
+    </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="/assets/css/login.css" />
+
+
+</head>
+
+<body>
+
+
+    <section id="dndk">
+        <div class="wrapperdkdn">
+
+
+            <span class="material-symbols-outlined">
+                close
+            </span>
+
+
+
+            <div class="form-box login">
+
+                <h2>Login</h2>
+
+                <form id="loginForm" action="/login" method="post">
+                    <div class="input-box">
+                        <span class="icon1">
+                            <i class='bx bx-envelope'></i>
+                        </span>
+                        <input type="email" name="email" required />
+
+                        <label for="">Email</label>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="icon1">
+                            <i class='bx bx-lock-alt'></i>
+                        </span>
+                        <input type="password" name="password" required />
+                        <label for="">Password</label>
+                    </div>
+
+                    <div class="remmber-forgot">
+                        <label><input type="checkbox" /> Remember Me <a href="">Forgot Password?</a></label>
+                    </div>
+
+                    <button type="submit" class="btn">Login</button>
+
+                    <div class="login-register">
+                        <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                    </div>
+                </form>
+            </div>
+
+
+
+
+            <div class="form-box register">
+
+                <h2>Registration</h2>
+                <form id="registerForm" action="/register" method="post">
+                    <div class="input-box">
+                        <span class="icon1"><i class='bx bx-user'></i></span>
+                        <input type="text" name="name" required>
+                        <label>Username</label>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="icon1"><i class='bx bx-envelope'></i></span>
+                        <input type="email" name="email" required>
+                        <label>Email</label>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="icon1"><i class='bx bx-lock-alt'></i></span>
+                        <input type="password" name="password" required>
+                        <label>Password</label>
+                    </div>
+
+                    <div class="remmber-forgot">
+                        <label><input type="checkbox"> I agree to the terms & conditions</label>
+                    </div>
+
+                    <button type="submit" class="btn">Register</button>
+
+                    <div class="login-register">
+                        <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                    </div>
+                </form>
+            </div>
+
+            <!-- <div id="message" style="color:red; text-align:center; margin-top:10px;"></div> -->
+
+    </section>
+
+
+
+    <script>
+        // document.querySelector(".register-link").addEventListener("click", () => {
+        //     document.querySelector(".wrapperdkdn").classList.add("active");
+        // });
+
+        // document.querySelector(".login-link").addEventListener("click", () => {
+        //     document.querySelector(".wrapperdkdn").classList.remove("active");
+        // });
+
+        // Login
+        document.getElementById("loginForm").onsubmit = async (e) => {
+            e.preventDefault();
+            const form = new FormData(e.target);
+
+            try {
+                const res = await fetch("/auth/login", {
+                    method: "post",
+                    body: new URLSearchParams(form),
+                });
+
+                const data = await res.json();
+                if (res.ok) {
+                    window.location.href = data.role === "admin" ? "/admin" : "/users";
+                } else {
+                    document.getElementById("message").innerText = data.error || "Đăng nhập thất bại!";
+                }
+            } catch (err) {
+                document.getElementById("message").innerText = "Lỗi kết nối tới server!";
+                console.error(err);
+            }
+        };
+
+        // Register
+        document.getElementById("registerForm").onsubmit = async (e) => {
+            e.preventDefault();
+            const form = new FormData(e.target);
+
+            try {
+                const res = await fetch("/auth/register", {
+                    method: "POST",
+                    body: new URLSearchParams(form),
+                });
+
+                const data = await res.json();
+                if (res.ok) {
+                    alert("Đăng ký thành công! Chuyển đến đăng nhập...");
+                    document.querySelector(".wrapperdkdn").classList.remove("active");
+                } else {
+                    document.getElementById("message").innerText = data.error || "Lỗi đăng ký!";
+                }
+            } catch (err) {
+                document.getElementById("message").innerText = "Lỗi kết nối tới server!";
+                console.error(err);
+            }
+        };
+    </script>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script src="/assets/javascripts/login.js"></script>
+</body>
+
+</html>

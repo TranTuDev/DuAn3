@@ -1,0 +1,236 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#dndk{
+	
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+  }
+
+  .wrapperdkdn {
+	position: relative;
+	width: 400px;
+	height: 440px;
+	border-radius: 20px;
+	backdrop-filter: blur(20px);
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden; 
+	/* để ảnh nền không tràn ra ngoài */
+	transition: height .2s ease;
+	backdrop-filter: blur(20px);
+  }
+
+  /* Khi đăng ký, tăng chiều cao */
+  .wrapperdkdn.active{
+	height: 520px;
+  }
+
+
+
+
+  .wrapperdkdn::before {
+	content: '';
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url('../../assets/css/images/aaa.jpg');
+	background-size: cover;
+	background-position: center;
+	filter: brightness(0.4);
+	z-index: 1;
+	pointer-events: none;
+}
+
+   .wrapperdkdn .form-box{
+	position: relative;
+	z-index: 2;
+	color: white;
+	width: 100%;
+	padding: 40px;
+	position: relative;
+	overflow: hidden;
+   }
+
+   .wrapperdkdn .form-box.login{
+	transition:  transform .18s ease;
+	transform: translateX(0);
+   }
+   .wrapperdkdn.active .form-box.login{
+	transition: none;
+	transform: translateX(-400px);
+
+   }
+
+   .wrapperdkdn .form-box.register{
+	position: absolute;
+	transform: translateX(400px);
+	transition: none;
+	
+   }
+   .wrapperdkdn.active .form-box.register{
+	transition: transform .18 ease;
+	transform: translateX(0);
+
+   }
+
+
+
+   .wrapperdkdn .material-symbols-outlined {
+	/* position: absolute;
+	top: 0;
+	right: 0;
+	width: 45px;
+	height: 45px;
+	font-size: 2em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	z-index: 1;
+	transition: all 0.3s ease; */
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	cursor: pointer;
+	font-size: 24px;
+	color: white;
+	z-index: 5; /* ✅ đảm bảo nổi lên trên cùng */
+	transition: color 0.3s;
+
+
+  }
+  .wrapperdkdn .material-symbols-outlined:hover {
+	color: #fd0808;
+	transform: scale(1.2) rotate(90deg);
+	
+  }
+
+   .form-box h2{
+	font-size: 2em;
+	color: #eff0f6;
+	text-align: center;
+
+   }
+   .input-box{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-bottom: 2px solid white;
+	margin: 30px 0;
+   }
+
+   .input-box label{
+	position: absolute;
+	top: 50%;
+	left: 5px;
+	transform:translateY(-50%) ;
+	font-size: 1em;
+	color: #eff0f6;
+	font-weight: 500;
+	pointer-events: none;
+	transition: all 0.5s ease;
+
+   }
+
+   .input-box input:focus~label,
+   .input-box input:valid~label{
+       top: -10px;
+   }
+
+   .input-box input{
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	border: none;
+	outline: none;
+    font-size: 1em;
+	color: #eff0f6;
+	font-weight: 600;
+	padding: 0 35px 0 5px;
+   }
+
+   .input-box i{
+       position: absolute;
+	   right: 8px;
+	   font-size: 1.2em;
+	   color: #ffffff;
+   }
+
+   .remmber-forgot{
+	font-size: .9em;
+	color: #ffffff;
+	font-weight: 500;
+	margin: -15px 0 15px;
+	display: flex;
+	justify-content: space-between;
+
+   }
+    
+
+   .remmber-forgot label input{
+	accent-color:  #ffffff;
+	margin-right: 3px;
+   }
+   .remmber-forgot a1{
+	color: #030ff8;
+	margin-left: 105px;
+	text-decoration: none;
+	cursor: pointer;
+   }
+
+   .remmber-forgot a1:hover{
+	text-decoration: underline;
+	color: #f4f5f6;
+   }
+   .btn{
+	width: 100%;
+	height: 40px;
+	border: none;
+	outline: none;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 1em;
+	font-weight: 500;
+	
+   }
+
+   .btn:hover{
+	color: #f80000;
+	
+   }
+   .login-register{
+	font-size: 1em;
+	text-align: center;
+	font-weight: 500;
+	margin: 25px 0 10px 0;
+   }
+
+   .login-register p a1{
+	color: #0a2df7;
+	text-decoration: none;
+	font-size: 600;
+	margin-left: 5px;
+   }
+
+   .login-register p a1:hover{
+	text-decoration: underline;
+	color: #ffffff;
+	cursor: pointer;
+   }
+

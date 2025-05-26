@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trading Journal</title>
+
+    <link rel="stylesheet" href="/assets/css/trading-journal.css">
+
+    <style>
+       
+    </style>
+</head>
+
+<body>
+
+
+    <%- include('partials/header', { user: user }) %>
+
+        <!-- ✍️ Add Entry -->
+        <div class="tong">
+            <div class="chu">
+                <h2>📘 Trading Journal</h2>
+            </div>
+            <form action="/users/tradingjournal" method="post">
+                <div class="form-group">
+                    <label for="pair">Cặp giao dịch:</label>
+                    <input type="text" class="form-control" name="cap_trade" id="pair" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="direction">Chiều lệnh:</label>
+                    <select id="direction" name="chieu_lenh" required>
+                        <option value="long">Long</option>
+                        <option value="short">Short</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="entry">Entry:</label>
+                    <input type="number" class="form-control" name="vao_entry" id="entry" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tp">TP:</label>
+                    <input type="number" class="form-control" name="dat_tp" id="tp">
+                </div>
+
+                <div class="form-group">
+                    <label for="sl">SL:</label>
+                    <input type="number" class="form-control" name="dinh_sl" id="sl">
+                </div>
+
+                <div class="form-group">
+                    <label for="do">Volum Giao Dịch $</label>
+                    <input type="number" class="form-control" name="tien_volum" id="do">
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <label for="result">Ngày Và Thời Gian Giao Dịch</label>
+                    <input type="datetime-local" class="form-control" name="date_trade" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="result">Kết quả:</label>
+                    <select id="result" name="ket_qua" required>
+                        <option value="win">Win</option>
+                        <option value="loss">Loss</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="note">Ghi chú:</label>
+                    <textarea id="note" rows="3" name="ghi_chu"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">+ Thêm Lệnh</button>
+            </form>
+
+
+            <!-- 🔍 Search -->
+            <div class="search-bar">
+                <form method="GET" action="/users/tradingjournal">
+                    <input type="text" name="search" placeholder="Tìm theo cặp coin..."
+                        value="<%= typeof search !== 'undefined' ? search : '' %>">
+                    <select name="result">
+                        <option value="">Tất cả</option>
+                        <option value="win" <%=result==='win' ? 'selected' : '' %>>Win</option>
+                        <option value="loss" <%=result==='loss' ? 'selected' : '' %>>Loss</option>
+                    </select>
+                    <button type="submit">Lọc</button>
+                </form>
+            </div>
+
+
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mã Lệnh</th>
+                        <th>Cặp Giao Dịch</th>
+                        <th>Chiều Lệnh</th>
+                        <th>TP</th>
+                        <th>SL</th>
+                        <th>Volum</th>
+                        <th>Ngày và Time Giao Dịch</th>
+                        <th>Kết Quả</th>
+                        <th>Ghi Chú</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% trades.forEach(trade=> { %>
+                        <tr>
+                            <td>
+                                <%= trade.ma_lenh %>
+                            </td>
+                            <td>
+                                <%= trade.cap_trade %>
+                            </td>
+                            <td>
+                                <%= trade.chieu_lenh %>
+                            </td>
+                            <td>
+                                <%= trade.dat_tp %>
+                            </td>
+                            <td>
+                                <%= trade.dinh_sl %>
+                            </td>
+                            <td>
+                                <%= trade.tien_volum %>
+                            </td>
+                            <td>
+                                <%= trade.date_trade.toLocaleString() %>
+                            </td>
+                            <td>
+                                <%= trade.ket_qua %>
+                            </td>
+                            <td>
+                                <%= trade.ghi_chu %>
+                            </td>
+                            <td>
+                                <!-- Sửa, Xóa -->
+                                <a href="/users/tradingjournal/edit/<%= trade.id %>">✏️</a>
+                                <form action="/users/tradingjournal/delete/<%= trade.id %>" method="post"
+                                    style="display:inline;">
+                                    <button type="submit" onclick="return confirm('Xoá giao dịch này?')">❌</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+
+        </div>
+
+
+
+
+        <!-- 📄 Entry List -->
+        <div class="entry-list" id="entryList"></div>
+
+
+</body>
+
+</html>

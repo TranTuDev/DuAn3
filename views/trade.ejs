@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>Trade</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="/assets/css/trade.css" />
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+	
+	 <%- include('partials/header', { user: user }) %>
+	
+
+	<main id="main" class="card-grid">
+
+		<div class="text">
+			<h1>Dân Chơi Call Kèo</h1>
+		</div>
+
+		<!-- BTC Card -->
+		<div class="trading-card">
+			<h2>BTC/USDT</h2>
+			<p class="description">Phân tích xu hướng dài hạn và entry theo volume.</p>
+			<div class="tradingview-widget-container">
+				<div id="btc_chart"></div>
+			</div>
+		</div>
+
+		<!-- ETH Card -->
+		<div class="trading-card">
+			<h2>ETH/USDT</h2>
+			<p class="description">Hỗ trợ kháng cự key + setup fakeout.</p>
+			<div class="tradingview-widget-container">
+				<div id="eth_chart"></div>
+			</div>
+		</div>
+
+		<!-- SOL Card -->
+		<div class="trading-card">
+			<h2>SOL/USDT</h2>
+			<p class="description">Trade range theo RSI và EMA.</p>
+			<div class="tradingview-widget-container">
+				<div id="sol_chart"></div>
+			</div>
+		</div>
+
+		<!-- BNB Card -->
+		<div class="trading-card">
+			<h2>BNB/USDT</h2>
+			<p class="description">Entry breakout + quản lý vốn nghiêm ngặt.</p>
+			<div class="tradingview-widget-container">
+				<div id="bnb_chart"></div>
+			</div>
+		</div>
+
+	</main>
+
+	<script src="https://s3.tradingview.com/tv.js"></script>
+	<script>
+		const charts = [
+			{ id: 'btc_chart', symbol: 'BINANCE:BTCUSDT' },
+			{ id: 'eth_chart', symbol: 'BINANCE:ETHUSDT' },
+			{ id: 'sol_chart', symbol: 'BINANCE:SOLUSDT' },
+			{ id: 'bnb_chart', symbol: 'BINANCE:BNBUSDT' },
+		];
+
+		charts.forEach(({ id, symbol }) => {
+			new TradingView.widget({
+				width: "100%",
+				height: 400,
+				symbol: symbol,
+				interval: "D",
+				timezone: "Etc/UTC",
+				theme: "light",
+				style: "1",
+				locale: "en",
+				toolbar_bg: "#151515",
+				enable_publishing: false,
+				container_id: id,
+			});
+		});
+	</script>
+
+	<%- include('partials/footer') %>
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+			crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+			integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+			crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+			crossorigin="anonymous"></script>
+</body>
+
+</html>
